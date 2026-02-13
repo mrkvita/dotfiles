@@ -1,0 +1,218 @@
+# -------------------- #
+# Author: Vit Mrkvica  #
+# -------------------- #
+
+#KEYS ---------------------
+set $mod Mod4
+set $alt Mod1
+set $ctrl Ctrl
+
+#FONT --------------------------
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:IntoneMono Nerd Font Mono 10
+
+#LOOKS ---------------------
+for_window [class=.*] border pixel  2
+gaps inner 14
+gaps outer 0
+gaps top -3
+hide_edge_borders both
+
+# client.focused         #d8a657 #d8a657 #d8a657 #d8a657 #d8a657  ### yellow
+client.focused         #98971a #98971a #98971a #98971a #98971a  ### green
+# client.focused          #b8bb26 #b8bb26 #b8bb26 #b8bb26 #b8bb26  ### light green
+# client.focused          #d3869b #d3869b #d3869b #d3869b   #d3869b  ### magenta 
+# client.focused          #8080804D #8080804D #8080804D #8080804D #8080804D  ### gray transparent
+client.focused_inactive #787878 #787878 #787878 #787878   #787878 
+client.unfocused        #787878 #787878 #787878 #787878   #787878
+client.urgent           #d79921 #900000 #ffffff #900000   #d79921
+client.placeholder      #d79921 #0c0c0c #ffffff #000000   #d79921
+client.background       #ffffff
+
+#MONITORS ---------------------
+set $mm HDMI-1-0
+set $sm eDP-1
+
+#AUTOSTART AND MISC ---------------------------------
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex-autostart --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+#KEYBINDINGS --------------------
+bindsym $alt+t exec kitty 
+bindsym $alt+q kill
+bindsym $alt+s exec mrofi
+bindsym $alt+o exec mrofi-p
+bindsym $alt+p exec "/home/vitmrkvica/.config/polybar/scripts/hide-toggle.sh"
+bindsym $alt+g exec "/home/vitmrkvica/.config/polybar/scripts/run-chat-gpt.sh"; workspace $ws5
+# nightmode
+bindsym $ctrl+$alt+y exec "redshift-gtk -P -O 3500"
+bindsym $ctrl+$alt+z exec "redshift-gtk -P -O 6000"
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+# move focused window
+bindsym $mod+$alt+h move left
+bindsym $mod+$alt+j move down
+bindsym $mod+$alt+k move up
+bindsym $mod+$alt+l move right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# split in horizontal orientation
+bindsym $mod+semicolon split h
+# split in vertical orientation
+bindsym $mod+v split v
+# enter fullscreen mode for the focused container
+bindsym $mod+m fullscreen toggle
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# focus the parent container
+bindsym $mod+a focus parent
+# printScreen
+bindsym Print exec filename="$(date '+%Y-%m-%d_%H-%M-%S').png" && \
+    scrot -s "/home/vitmrkvica/Pictures/Screenshots/$filename" && \
+    xclip -selection clipboard -t image/png -i "/home/vitmrkvica/Pictures/Screenshots/$filename"
+# brightness
+bindsym XF86MonBrightnessDown exec brightnessctl -d "nvidia_wmi_ec_backlight" set 80-
+bindsym XF86MonBrightnessUp exec brightnessctl -d "nvidia_wmi_ec_backlight" set +80
+
+#WORKSPACES-------------------------------------------------------
+# Configure monitors
+workspace 1 output $mm
+workspace 2 output $mm
+workspace 3 output $mm
+workspace 4 output $mm
+workspace 5 output $mm
+workspace 6 output $mm
+workspace 7 output $mm
+workspace 8 output $mm
+workspace 9 output $sm
+workspace 0 output $sm
+
+# Define workspace vairables
+set $ws0 "0"
+set $ws1 "1:net"
+set $ws2 "2:code"
+set $ws3 "3:term"
+set $ws4 "4:docs"
+set $ws5 "5:chat-gpt"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# First Monitor Keybindings
+bindsym $ctrl+1 workspace number $ws1 
+bindsym $ctrl+2 workspace number $ws2
+bindsym $ctrl+3 workspace number $ws3
+bindsym $ctrl+4 workspace number $ws4
+bindsym $ctrl+5 workspace number $ws5
+bindsym $ctrl+6 workspace number $ws6
+bindsym $ctrl+7 workspace number $ws7
+bindsym $ctrl+8 workspace number $ws8
+bindsym $ctrl+9 workspace number $ws9
+# Second monitor keybindings
+bindsym $ctrl+0 workspace number $ws0
+# Fly workspaces 
+bindsym $mod+period workspace next
+bindsym $mod+comma workspace prev
+# Move focused container between monitors
+bindsym $mod+shift+h move container to output left; focus output $sm;
+bindsym $mod+shift+l move container to output right; focus output $mm  
+# Move focused container to workspace
+bindsym $ctrl+Shift+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $ctrl+Shift+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $ctrl+Shift+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $ctrl+Shift+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $ctrl+Shift+5 move container to workspace number $ws5; workspace number $ws5
+bindsym $ctrl+Shift+6 move container to workspace number $ws6; workspace number $ws6
+bindsym $ctrl+Shift+7 move container to workspace number $ws7; workspace number $ws7
+bindsym $ctrl+Shift+8 move container to workspace number $ws8; workspace number $ws8
+bindsym $ctrl+Shift+9 move container to workspace number $ws9; workspace number $ws9
+bindsym $ctrl+Shift+0 move container to workspace number $ws0; workspace number $ws0
+# Move focused container between workspaces
+bindsym $mod+Shift+period move container to workspace next; workspace next 
+bindsym $mod+Shift+comma move container to workspace prev; workspace prev
+
+#RESIZE WINDOWS -------------------------------------------
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym l resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#WINDOW RULES ---------------------
+floating_minimum_size 20 x 20
+floating_maximum_size 800 x 800
+assign [class="Brave-browser" title="chat.openai.com"] $ws5
+assign [class="Brave-browser"] $ws1
+assign [class="Spotify"] $ws9
+assign [class="Code"] $ws2
+
+#RUN ON LAUNCH-----------------------------------------
+exec_always --no-startup-id sh -c 'export PATH="$HOME/.local/bin:$PATH"
+exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id picom
+exec_always --no-startup-id autotiling 
+exec_always --no-startup-id run_polybar
+exec_always --no-startup-id "xrandr --output eDP-1 --mode 1920x1080 --rate 144" 
+exec_always --no-startup-id "xrandr --output HDMI-1-0 --mode 1920x1080 --rate 144 --right-of eDP-1"
+### xrandr --output HDMI-1-0 --mode 1360x768--rate 144 --right-of eDP-1
+exec_always --no-startup-id i3-msg workspace $ws1
+exec_always --no-startup-id "setxkbmap -option 'grp:win_space_toggle' -layout us,cz -variant ,qwerty"
+exec_always --no-startup-id "redshift-gtk -x"
+exec --no-startup-id "/usr/libexec/xdg-desktop-portal"
+
+
+# ----------------- END OF CONFIG ---------------------

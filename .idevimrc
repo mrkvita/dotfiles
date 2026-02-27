@@ -1,0 +1,86 @@
+" #Misc
+
+let mapleader = " "
+
+" ysiw"
+set surround
+
+" system clipboard
+set clipboard+=unnamed
+set clipboard+=unnamedplus
+
+" remove chars when joining lines if needed
+set ideajoin
+" highlight search result
+set hlsearch
+" case sensitive only if capital letter is used
+set smartcase
+" search without enter
+set incsearch 
+
+" #Handlers
+
+sethandler <Space> a:vim
+
+" #Actions
+
+" toggle comments
+nmap gcc <Action>(CommentByLineComment)
+nmap gcb <Action>(CommentByBlockComment)
+vmap gc <Action>(CommentByLineComment)
+vmap gcb <Action>(CommentByBlockComment)
+
+" navigate splits
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+
+nmap <leader>e <Action>(ActivateProjectToolWindow)<Action>(HideActiveToolWindow)
+
+" navigate tabs
+nmap <leader>r <Action>(Run)
+nmap <leader>R <Action>(Debug)
+
+
+
+" split 
+map <leader>xl <Action>(SplitVertically)
+map <leader>xh <Action>(SplitVertically)
+map <leader>xj <Action>(SplitHorizontally)
+map <leader>xk <Action>(SplitHorizontally)
+map <leader>xa <Action>(UnsplitAll)
+
+" close tabs
+nmap <leader>bd <Action>(CloseContent)
+
+" navigate codebase 
+map <leader>sc <Action>(GotoClass)
+map <leader>sf <Action>(GotoFile)
+map <leader>ss <Action>(GotoSymbol)
+map <leader>sa <Action>(GotoAction)
+map <leader>gd <Action>(GotoDeclaration)
+map <leader>gy <Action>(GotoTypeDeclaration)
+map <leader>gi <Action>(GotoImplementation)
+map <leader>gt <Action>(GotoTest)
+map <leader>gm <Action>(GotoSuperMethod)
+map <leader>gl <Action>(GotoLine)
+
+map <leader>ug <Action>(FindUsages)
+map <leader>uu <Action>(ShowUsages)
+map <leader>vs <Action>(ViewSource)
+map <leader>im <Action>(QuickImplementations)
+map <leader>td <Action>(QuickTypeDefinition)
+map <leader>ti <Action>(ExpressionTypeInfo)
+map <leader>sh <Action>(ShowHoverInfo)
+map <leader>oo <Action>(FileStructurePopup)
+
+map <leader>cf <Action>(NewFile)
+map <leader>cd <Action>(NewDir)
+map <leader>rf <Action>(RenameFile)
+map <leader>of <Action>(OpenFile)
+map <leader>ri <Action>(RestartIde)
+
+map <leader>sw <Action>(SurroundWith)
+map <leader><leader> <Action>(ReformatCode)

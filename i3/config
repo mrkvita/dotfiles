@@ -7,6 +7,10 @@ set $mod Mod4
 set $alt Mod1
 set $ctrl Ctrl
 
+#VARS ---------------------
+set $app_url https://claude.ai/new
+set $app_class_name .*Claude.*
+
 #FONT --------------------------
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -18,9 +22,9 @@ font pango:IntoneMono Nerd Font Mono 10
 
 #LOOKS ---------------------
 for_window [class=.*] border pixel  1
-gaps inner 0
-gaps outer 3
-gaps top 2
+gaps inner 10
+gaps outer 0
+gaps top 0
 hide_edge_borders smart_no_gaps
 
 client.focused         #d8a657 #d8a657 #d8a657 #d8a657 #d8a657  ### yellow
@@ -60,7 +64,7 @@ bindsym $alt+q kill
 bindsym $alt+s exec mrofi
 bindsym $alt+o exec mrofi-p
 bindsym $alt+p exec "/home/vitmrkvica/.config/polybar/scripts/hide-toggle.sh"
-bindsym $alt+g exec "/home/vitmrkvica/.config/polybar/scripts/run-chat-gpt.sh"; workspace $ws5
+bindsym $alt+g exec "/home/vitmrkvica/.config/polybar/scripts/run-chat-gpt.sh $app_url"; workspace $ws5
 # nightmode
 bindsym $ctrl+$alt+y exec "redshift-gtk -P -O 3500"
 bindsym $ctrl+$alt+z exec "redshift-gtk -P -O 6000"
@@ -196,7 +200,7 @@ bindsym $mod+r mode "resize"
 #WINDOW RULES ---------------------
 floating_minimum_size 20 x 20
 floating_maximum_size 1920 x 1080 
-assign [class="Brave-browser" title="chat.openai.com"] $ws5
+for_window [class="Brave-browser" title="$app_class_name"] move to workspace $ws5
 assign [class="Brave-browser"] $ws1
 assign [class="Spotify"] $ws9
 assign [class="Code"] $ws2

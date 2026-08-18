@@ -1,0 +1,153 @@
+{
+    "editor.fontSize": 14,
+    "editor.fontWeight": 500,
+    "editor.semanticTokenColorCustomizations": {},
+    "settings.cycle": [
+        {
+            "id": "lineNumbers",
+            "values": [
+                {
+                    "editor.lineNumbers": "off",
+                },
+                {
+                    "editor.lineNumbers": "relative",
+                }
+            ]
+        }
+    ],
+    "editor.scrollbar.verticalScrollbarSize": 0,
+    "editor.scorrlbar.horizontalScrollbarSize": 2.5,
+    "editor.fontFamily": "IntoneMono Nerd Font Mono",
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "off",
+        "strings": "off"
+    },
+    "terminal.integrated.fontFamily": "IntoneMono Nerd Font Mono",
+    "terminal.integrated.fontSize": 14,
+    "terminal.external.linuxExec": "kitty",
+    "explorer.confirmDelete": false,
+    "workbench.sideBar.location": "right",
+    "vim.useSystemClipboard": true,
+    "vim.handleKeys": {
+        "<CR>": false
+    },
+    "editor.lineNumbers": "relative",
+    "python.terminal.focusAfterLaunch": true,
+    "extensions.ignoreRecommendations": true,
+    "terminal.integrated.ignoreProcessNames": [
+        "starship",
+        "oh-my-posh",
+        "bash",
+        "zsh",
+        "fish"
+    ],
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
+    "workbench.preferredLightColorTheme": "Gruvbox Light Soft",
+    "window.titleBarStyle": "native",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "apc.electron": {
+        "backgroundColor": "#00000000",
+        "frame": true
+    },
+    "apc.stylesheet": {
+        "*": "font-family: 'RobotoMono Nerd Font Mono'"
+    },
+    "apc.listRow": {
+        "lists": [
+            "explorer-folders-view",
+            "quick-input-list",
+            "results"
+        ],
+        "height": 30,
+        "fontSize": 8,
+    },
+    "apc.menubar.compact": false,
+    "workbench.productIconTheme": "jetbrains-product-icons",
+    "workbench.colorTheme": "Monokai Pro",
+    "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
+    "[c]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "c": true,
+        "python": false,
+        "feature": true,
+        "cpp": false
+    },
+    "apc.font.family": "IntoneMono Nerd Font Mono",
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.defaultInterpreterPath": "/bin/python",
+    "editor.minimap.enabled": false,
+    "zig.path": "zig",
+    "zig.zls.path": "zls",
+    "glassit.alpha": 255,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+    "python.formatting.provider": "black",
+    "sqldeveloper.sqlHistory.historyLimit": 500,
+    "sqldeveloper.telemetry.enabled": true,
+    "files.associations": {
+        "*.sql": "oracle-sql",
+        "xtf": "shellscript",
+        "*.cpp": "cpp"
+    },
+    "editor.stickyScroll.enabled": false,
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "clang-format.fallbackStyle": "Google",
+    "[shellscript]": {
+        "files.eol": "\n",
+        "editor.defaultColorDecorators": "never"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "editor.folding": false,
+    "editor.glyphMargin": false,
+    "workbench.activityBar.location": "top",
+    "workbench.tree.enableStickyScroll": false,
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "window.menuBarVisibility": "toggle",
+    "window.customTitleBarVisibility": "never",
+    "workbench.panel.showLabels": false,
+    "notebook.lineNumbers": "on",
+    "vim.smartRelativeLine": true,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "right"
+    },
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.tabSize": 2,
+    "chat.editing.confirmEditRequestRemoval": false,
+    "php.problems.exclude": {
+        "**/*": [
+            "PHP6615"
+        ]
+    },
+    "git.blame.editorDecoration.enabled": false,
+    "zig.zls.enabled": "on",
+    "idf.hasWalkthroughBeenShown": true,
+    "idf.espIdfPath": "/home/vitmrkvica/esp/esp-idf",
+    "idf.toolsPath": "/home/vitmrkvica/.espressif",
+    "idf.gitPath": "git",
+    "idf.pythonInstallPath": "/usr/bin/python",
+    "sqldeveloper.datagrid.fontFamily": "'Droid Sans Mono', monospace",
+    "chat.viewSessions.orientation": "stacked",
+    "claudeCode.selectedModel": "opus",
+    "claudeCode.preferredLocation": "panel",
+    "editor.formatOnSave": true,
+}
